@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -9,16 +9,11 @@
     />
 
     <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <!-- Bootstrap Icon -->
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
     <!-- AOS -->
 
@@ -36,7 +31,7 @@
   </head>
   <body id="home">
     <!-- navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm fixed-top" style="background-color: var(--bs-body-bg);">
       <div class="container">
         <a
           class="navbar-brand"
@@ -94,6 +89,35 @@
                 >Gellery</a
               >
             </li>
+            <li class="nav-item dropdown">
+                <button class="btn nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-sun-fill theme-icon-active"
+                  data-theme-icon-active="bi-sun-fill"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="light">
+                      <i class="bi bi-sun-fill me-2 opacity-50"
+                      data-theme-icon="bi-sun-fill"></i>
+                      Light
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="dark">
+                      <i class="bi bi-moon-stars-fill me-2 opacity-50"
+                      data-theme-icon="bi-moon-stars-fill"></i>
+                      Dark
+                    </button>
+                  </li>
+                  <li>
+                    <button class="dropdown-item d-flex align-items-center" type="button" data-bs-theme-value="auto">
+                      <i class="bi bi-circle-half me-2 opacity-50"
+                      data-theme-icon="bi-circle-half"></i>
+                      Auto
+                    </button>
+                  </li>
+                </ul>
+            </li>
           </ul>
         </div>
       </div>
@@ -101,7 +125,7 @@
     <!-- end navbar -->
 
     <!-- Jumbotron -->
-    <section class="jumbotron text-center">
+    <section class="jumbotron text-center ">
       <img
         src="img/khalil3.jpeg"
         alt=""
@@ -111,10 +135,12 @@
       <h1 class="display-4">Khalilul fajri Zamardiyanto</h1>
       <p class="lead">job seeker | Fresh Graduate <br> 
         email : khalilulfajrii@gmail.com | Hp : 081267528315</p>
+        
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
       >
+      
         <path
           fill="#fff"
           fill-opacity="1"
@@ -183,13 +209,13 @@
         <div class="col-md-4 mb-3">
           <div class="card" data-aos="flip-left" data-aos-duration="500" data-aos-delay="200">
             <img
-              src="img/akhir.png"
+              src="img/blog.png"
               class="card-img-top"
               alt="web komik"
             />
             <div class="card-body">
-              <p class="card-text">aplikasi Kasir, dibuat dengan PHP framework Laravel.
-                tujuan pembuatan projek ini untuk memenuhi tugas akhir/skrips</p>
+              <p class="card-text">website blog, dibuat dengan PHP framework Laravel 8.
+                tujuan pembuatan blog ini untuk mengasah kemampuan saya sendiri</p>
             </div>
           </div>
       </div>
@@ -301,11 +327,74 @@
     </footer>
     <!-- End Footer -->
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <script>
+      /*!
+ * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
+ * Copyright 2011-2022 The Bootstrap Authors
+ * Licensed under the Creative Commons Attribution 3.0 Unported License.
+ */
+
+(() => {
+  'use strict'
+
+  const storedTheme = localStorage.getItem('theme')
+
+  const getPreferredTheme = () => {
+    if (storedTheme) {
+      return storedTheme
+    }
+
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  }
+
+  const setTheme = function (theme) {
+    if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-bs-theme', 'dark')
+    } else {
+      document.documentElement.setAttribute('data-bs-theme', theme)
+    }
+  }
+
+  setTheme(getPreferredTheme())
+
+  const showActiveTheme = theme => {
+    const activeThemeIcon = document.querySelector('.theme-icon-active')
+    const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+    const iconOfActiveBtn = btnToActive.querySelector('i').dataset.themeIcon
+
+    document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+      element.classList.remove('active')
+    })
+
+    btnToActive.classList.add('active')
+    activeThemeIcon.classList.remove(activeThemeIcon.dataset.themeIconActive)
+    activeThemeIcon.classList.add(iconOfActiveBtn)
+    activeThemeIcon.dataset.iconActive = iconOfActiveBtn 
+  }
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (storedTheme !== 'light' || storedTheme !== 'dark') {
+      setTheme(getPreferredTheme())
+    }
+  })
+
+  window.addEventListener('DOMContentLoaded', () => {
+    showActiveTheme(getPreferredTheme())
+
+    document.querySelectorAll('[data-bs-theme-value]')
+      .forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const theme = toggle.getAttribute('data-bs-theme-value')
+          localStorage.setItem('theme', theme)
+          setTheme(theme)
+          showActiveTheme(theme)
+        })
+      })
+  })
+})()
+    </script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
